@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        let editFun = async function (url, myData, el = null) {
+            let postData = await fetch(url, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                },
+                body: myData,
+            });
+
+            let responseData = await postData.json();
+
+            console.log(responseData);
+        };
+
+        let fun = async function () {
+
+            let ali = new FormData();
+            ali.append('name','ali');
+            ali.append('password','123');
+            ali.append('password_confirmation','123');
+            ali.append('phone_number','123456');
+            ali.append('email''ali@ali.com');
+            let myResponse = await editFun(
+                `http://api.localhost:5000/register
+        `,
+            ali
+            );
+            console.log(myResponse);
+        };
+        fun();
+    </script>
+</html>
