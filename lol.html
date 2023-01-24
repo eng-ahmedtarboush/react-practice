@@ -23,17 +23,16 @@
         };
 
         let fun = async function () {
-
             let ali = new FormData();
-            ali.append('name','ali');
-            ali.append('password','123');
-            ali.append('password_confirmation','123');
-            ali.append('phone_number','123456');
-            ali.append('email''ali@ali.com');
+            ali.append("name", "ali");
+            ali.append("password", "123");
+            ali.append("password_confirmation", "123");
+            ali.append("phone_number", "123456");
+            ali.append("email", "ali@ali.com");
             let myResponse = await editFun(
                 `http://api.localhost:5000/register
         `,
-            ali
+                ali
             );
             console.log(myResponse);
         };
