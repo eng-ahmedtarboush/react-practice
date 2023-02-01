@@ -6,6 +6,7 @@ import NotFound from "./views/NotFound";
 import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
 import Users from "./views/Users";
+import UserForm from "./views/UserForm";
 
 function App() {
     return (
@@ -14,11 +15,20 @@ function App() {
                 <Route path="/" element={<DefaultLayout />}>
                     <Route path="/dashbourd" element={<Dashbourd />} />
                     <Route path="/" element={<Users />} />
-                    <Route path="/users" element={<Users />} />
+                    <Route path="/users" element={<Users />}>
+                        <Route
+                            path="/users/new"
+                            element={<UserForm key="userCreate" />}
+                        />
+                        <Route
+                            path="/users/:id"
+                            element={<UserForm key="userUpdate" />}
+                        />
+                    </Route>
                 </Route>
                 <Route path="/" element={<GuestLayout />}>
-                    <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/login" element={<Login />} />
                 </Route>
 
                 <Route path="*" element={<NotFound />} />
